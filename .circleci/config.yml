@@ -2,7 +2,7 @@ version: 2
 jobs:
   deploy:
     docker:
-      - image: circleci/python:2.7
+      - image: circleci/python:2.7/openjdk:8-jdk-browsers
     working_directory: ~/ARC
     steps:
       - checkout
