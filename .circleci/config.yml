@@ -3,7 +3,7 @@ jobs:
   deploy:
     docker:
       - image: circleci/python:2.7
-    working_directory: ~/repo
+    working_directory: ~/dekker-arc
     steps:
       - checkout
       - run:
@@ -16,14 +16,14 @@ jobs:
             mkdir ~/.aws
             touch ~/.aws/config
             chmod 600 ~/.aws/config
-            echo "[profile eb-cli]" > ~/.aws/config
+            echo "[profile dev]" > ~/.aws/config
             echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config
             echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
       - run:
           name: Deploy to EB if branch is Master
           command: |
-             eb use server-backend-env --profile eb-cli
-             eb deploy -v --staged --profile eb-cli
+             eb use ARC-dev --profile dev
+             eb deploy -v --staged --profile dev
 workflows:
   version: 2
   build-deploy:
