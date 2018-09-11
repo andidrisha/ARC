@@ -3,7 +3,6 @@ jobs:
   deploy:
     docker:
       - image: circleci/python:2.7
-      - image: circleci/openjdk:8-jdk-browsers
     working_directory: ~/ARC
     steps:
       - checkout
@@ -25,8 +24,6 @@ jobs:
           command: |
              eb use ARC-dev --profile dev
              eb deploy -v --staged --profile dev
-      - run: mvn package
-      - run: mvn spring-boot:run
 workflows:
   version: 2
   build-deploy:
