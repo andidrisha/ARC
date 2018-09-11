@@ -16,4 +16,4 @@ global:
   sc: git
   workspace_type: Application
 deploy:
-  artifact: target/ARC-0.0.1-SNAPSHOT.jar
+  artifact: target/app-111c-180911_220558-stage-180911_220558.jar
