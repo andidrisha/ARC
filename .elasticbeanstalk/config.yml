@@ -16,4 +16,4 @@ global:
   sc: git
   workspace_type: Application
 deploy:
-  artifact: ARC/app-5084-180911_224302-stage-180911_224302.jar
+  artifact: ARC-0.0.1-SNAPSHOT.jar
