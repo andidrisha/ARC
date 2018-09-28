@@ -14,5 +14,19 @@ public class Constants {
 	
 	public final static String QUERY_BY_URL = "/{queryType}/{queryValue}";
 	
+	public final static String QUERY_TYPE = "queryType";
+	
+	public final static String QUERY_VALUE = "queryValue";
+	
 	public final static String PDF_URL = "/convertToPdf";
+	
+	public final static String NAME = "name";
+	
+	public final static String TAGS = "tags";
+	
+	public final static String CLIENT_NAME = "clientname";
+	
+	public final static String WRONG_QUERY_TYPE = "Wrong queryType";
+	
+	public final static String NO_CASE_STUDY_FOUND = "No Case study found";
 }

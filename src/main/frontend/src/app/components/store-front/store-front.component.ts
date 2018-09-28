@@ -21,10 +21,12 @@ export class StoreFrontComponent implements OnInit {
   }
 
   public addCaseStudyToCart(caseStudy: CaseStudy): void {
+    caseStudy.isAdded = true;
     this.shoppingCartService.addItem(caseStudy, 1);
   }
 
   public removeCaseStudyFromCart(caseStudy: CaseStudy): void {
+    caseStudy.isAdded = false;
     this.shoppingCartService.addItem(caseStudy, -1);
   }
 

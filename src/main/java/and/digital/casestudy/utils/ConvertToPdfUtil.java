@@ -4,16 +4,21 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 
 import and.digital.casestudy.models.CaseStudy;
 
 public class ConvertToPdfUtil {
+	static Logger logger = LoggerFactory.getLogger(ConvertToPdfUtil.class);
 
 	public static void convertToPdf(List<CaseStudy> caseStudies) {
 
 		Document pdfRecord = new Document();
+		logger.info("Creating PDF with the case studies provided");
 		PdfPTable report;
 		try {
 			String home = System.getProperty("user.home");
@@ -40,7 +45,7 @@ public class ConvertToPdfUtil {
 			pdfRecord.add(report);
 
 		} catch (FileNotFoundException | DocumentException e) {
-			e.printStackTrace();
+			logger.error("Error creating PDF " + e);
 		} finally {
 			pdfRecord.close();
 		}

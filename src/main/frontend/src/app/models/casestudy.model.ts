@@ -3,6 +3,7 @@ export class CaseStudy {
   public name: string;
   public description: string;
   public summary: string;
+  public isAdded: boolean;
 
   public updateFrom(src: CaseStudy): void {
     this.id = src.id;
