@@ -1,0 +1,14 @@
+<ul>
+  <li>
+    <h5>Search By : </h5>
+  </li>
+  <li> <select #select>
+      <option value="name">Name</option>
+      <option value="tags">Tags</option>
+      <option value="clientname">Client Name</option>
+    </select></li>
+
+  <li><input #box (keyup.enter)="searchByQuery(box.value, select.value)" /></li>
+  <li><button (click)="searchByQuery(box.value, select.value)" > Search</button></li>
+
+</ul>

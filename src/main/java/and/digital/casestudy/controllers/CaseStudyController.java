@@ -18,9 +18,10 @@ import and.digital.casestudy.exception.CaseStudyException;
 import and.digital.casestudy.models.CaseStudy;
 import and.digital.casestudy.repositories.CaseStudyRepository;
 import and.digital.casestudy.utils.ConvertToPdfUtil;
+import and.digital.casestudy.utils.Constants;
 
 @RestController
-@RequestMapping("/api/v1/casestudy")
+@RequestMapping(Constants.HOME_URL)
 public class CaseStudyController {
 	
 	Logger logger = LoggerFactory.getLogger(CaseStudyController.class);
@@ -40,13 +41,16 @@ public class CaseStudyController {
 		caseStudyRepository.save(caseStudy);
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping(Constants.CASE_STUDY_BY_ID_URL)
 	public CaseStudy get(@PathVariable("id") long id) {
 		return caseStudyRepository.getOne(id);
 	}
 	
-	@GetMapping("/{queryType}/{queryValue}")
+	@GetMapping(Constants.QUERY_BY_URL)
 	public List<CaseStudy> getSearchData(@PathVariable("queryType")String queryType, @PathVariable("queryValue")String queryValue) {
+		
+		System.out.println("In getSearchData");
+		
 		if(queryType.equals("name"))
 		{
 			return getCaseStudyByName(queryValue);
@@ -55,7 +59,7 @@ public class CaseStudyController {
 		{
 			return getCaseStudyByTags(queryValue);
 		}
-		else if(queryType.equals("tags"))
+		else if(queryType.equals("clientname"))
 		{
 			return getCaseStudyByClientName(queryValue);
 		}
@@ -66,10 +70,10 @@ public class CaseStudyController {
 	}
 	
 	@PostMapping("/convertToPdf")
-	public void post(@RequestBody List<CaseStudy> casestudies) {
+	public void createPDF(@RequestBody List<CaseStudy> casestudies) {
+		System.out.println("In post");
 		ConvertToPdfUtil.convertToPdf(casestudies);
 	}
-	
 	
 	public List<CaseStudy> getCaseStudyByName(String name) {
 		return caseStudyRepository.findByName(name);

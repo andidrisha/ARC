@@ -1,0 +1,40 @@
+<div class="top-bar">
+  <app-search (messageEvent)="receiveMessage($event)"></app-search>
+</div>
+<div class="row">
+  <div class="small-15 medium-8 columns">
+    <h3>Case Studies </h3>
+    <ul class="casestudy-list">
+      <li *ngFor="let casestudy of casestudys | async as casestudys " class="casestudy-container">
+
+        <div class="row">
+          <div class="medium-3 columns 9 text-center">
+            <img src="./assets/{{casestudy.id}}.jpg" class="casestudy_image" />
+          </div>
+          <div class="medium-9 columns">
+            <h4>
+              <span class="text--bold js-casestudy-name">{{casestudy.name}}</span>
+
+            </h4>
+            <p class="js-casestudy-desc">{{casestudy.summary}}</p>
+            <p>
+              <span class="text--bold">Description:</span>
+              <br />
+              {{casestudy.description}}
+              <br />
+            </p>
+            <p>
+              <button type="button" class="button success large js-btn-add" (click)="addCaseStudyToCart(casestudy,  1)">Add
+              </button>
+              <button type="button" class="button small js-btn-remove" *ngIf="caseStudyInCart(casestudy) | async"
+                (click)="removeCaseStudyFromCart(casestudy, 1)">Remove</button>
+            </p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="small-12 medium-4 columns">
+    <app-shopping-cart></app-shopping-cart>
+  </div>
+</div>
