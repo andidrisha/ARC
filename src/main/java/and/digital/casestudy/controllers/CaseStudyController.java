@@ -31,6 +31,7 @@ public class CaseStudyController {
 
 	@GetMapping
 	public List<CaseStudy> list() {
+		logger.info("Fetching all the casestudies ");
 		return caseStudyRepository.findAll();
 	}
 
@@ -41,15 +42,10 @@ public class CaseStudyController {
 		caseStudyRepository.save(caseStudy);
 	}
 
-	@GetMapping(Constants.CASE_STUDY_BY_ID_URL)
-	public CaseStudy get(@PathVariable("id") long id) {
-		return caseStudyRepository.getOne(id);
-	}
-	
 	@GetMapping(Constants.QUERY_BY_URL)
 	public List<CaseStudy> getSearchData(@PathVariable("queryType")String queryType, @PathVariable("queryValue")String queryValue) {
 		
-		System.out.println("In getSearchData");
+		logger.info("Searching case studys whose {}" + queryType + "are {}" + queryValue);
 		
 		if(queryType.equals("name"))
 		{
@@ -65,13 +61,14 @@ public class CaseStudyController {
 		}
 		else
 		{
+			logger.error("Error occured due to wrong queryType {}" + queryType );
 			throw new CaseStudyException("Wrong queryType");
 		}
 	}
 	
 	@PostMapping("/convertToPdf")
 	public void createPDF(@RequestBody List<CaseStudy> casestudies) {
-		System.out.println("In post");
+		logger.info("Creating a PDF ");
 		ConvertToPdfUtil.convertToPdf(casestudies);
 	}
 	
