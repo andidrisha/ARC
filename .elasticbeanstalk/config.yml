@@ -2,10 +2,12 @@ branch-defaults:
   master:
     environment: ARC-dev
     group_suffix: null
+deploy:
+	artifact: target/ARC-0.0.1-SNAPSHOT.jar
 global:
   application_name: ARC
   branch: null
-  default_ec2_keyname: null
+  default_ec2_keyname: sample-key
   default_platform: Java 8
   default_region: eu-west-2
   include_git_submodules: true
@@ -16,5 +18,3 @@ global:
   repository: null
   sc: git
   workspace_type: Application
-deploy:
-	artifact: target/ARC-0.0.1-SNAPSHOT.jar
