@@ -14,6 +14,7 @@ import { CaseStudyDataService } from "./services/casestudys.service";
 import { ShoppingCartService } from "./services/shopping-cart.service";
 import { LocalStorageServie, StorageService } from "./services/storage.service";
 import { SearchComponent } from './components/search/search.component';
+import { UploadCasestudyComponent } from './components/upload-casestudy/upload-casestudy.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -23,7 +24,8 @@ import { SearchComponent } from './components/search/search.component';
     StoreFrontComponent,
     CheckoutComponent,
     OrderConfirmationComponent,
-    SearchComponent
+    SearchComponent,
+    UploadCasestudyComponent
   ],
   imports: [
     BrowserModule,

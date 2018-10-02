@@ -1,5 +1,5 @@
 import { Injectable, ErrorHandler } from "@angular/core";
-import { Http } from "@angular/http";
+import { Http} from "@angular/http";
 import { CaseStudy } from "../models/casestudy.model";
 import "rxjs/add/operator/map";
 import 'rxjs/add/operator/catch';
@@ -22,7 +22,7 @@ export class CaseStudyDataService extends CachcingServiceBase {
     return this.cache<CaseStudy[]>(() => this.casestudys,
       (val: Observable<CaseStudy[]>) => this.casestudys = val,
       () => this.http
-        .get("./assets/casestudys.json")
+        .get(this.API_URL)
         .map((response) => response.json()
           .map((item) => {
             let model = new CaseStudy();
@@ -43,6 +43,15 @@ export class CaseStudyDataService extends CachcingServiceBase {
 
   }
 
+  public uploadCasestudy(casestudy: CaseStudy)
+  {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http
+      .post(this.API_URL, JSON.stringify(casestudy), options)
+      .map((response) => response.json());
+  }
 
   public searchByQuery(queryType: string, queryValue: string): Observable<CaseStudy[]> {
     return this.cache<CaseStudy[]>(() => this.filteredCasestudys,

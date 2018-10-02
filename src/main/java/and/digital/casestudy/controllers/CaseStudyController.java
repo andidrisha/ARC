@@ -62,7 +62,7 @@ public class CaseStudyController {
 		if (casestudys.size() == 0) {
 			logger.error("No case study for {} " + queryValue + " found");
 			throw new CaseStudyException(Constants.NO_CASE_STUDY_FOUND);
-		} 
+		}
 		return casestudys;
 	}
 
@@ -77,14 +77,14 @@ public class CaseStudyController {
 	}
 
 	public List<CaseStudy> getCaseStudyByName(String name) {
-		return caseStudyRepository.findByName(name);
+		return caseStudyRepository.findByName(".*" + name + ".*");
 	}
 
 	public List<CaseStudy> getCaseStudyByTags(String tags) {
-		return caseStudyRepository.findByTags(tags);
+		return caseStudyRepository.findByTags(".*" + tags + ".*");
 	}
 
 	public List<CaseStudy> getCaseStudyByClientName(String clientName) {
-		return caseStudyRepository.findByClientName(clientName);
+		return caseStudyRepository.findByClientName(".*" + clientName + ".*");
 	}
 }
