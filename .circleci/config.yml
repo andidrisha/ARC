@@ -24,6 +24,11 @@ jobs:
           command: |
              eb use ARC-dev --profile dev
              eb deploy -v --staged --profile dev
+             echo $CIRCLE_BUILD_NUM
+             echo $CIRCLE_JOB
+             echo $CIRCLE_PR_NUMBER
+             echo $CIRCLE_PREVIOUS_BUILD_NUM
+             echo $CIRCLE_WORKFLOW_ID
 workflows:
   version: 2
   build-deploy:
