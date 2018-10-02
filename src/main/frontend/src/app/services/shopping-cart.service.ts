@@ -17,10 +17,10 @@ export class ShoppingCartService {
   private casestudys: CaseStudy[];
 
   public constructor(private storageService: StorageService,
-                     private casestudyService: CaseStudyDataService) {
+    private casestudyService: CaseStudyDataService) {
     this.storage = this.storageService.get();
     this.casestudyService.all().subscribe((casestudys) => this.casestudys = casestudys);
-    
+
     this.subscriptionObservable = new Observable<ShoppingCart>((observer: Observer<ShoppingCart>) => {
       this.subscribers.push(observer);
       observer.next(this.retrieve());
@@ -72,12 +72,12 @@ export class ShoppingCartService {
 
   private dispatch(cart: ShoppingCart): void {
     this.subscribers
-        .forEach((sub) => {
-          try {
-            sub.next(cart);
-          } catch (e) {
-            // we want all subscribers to get the update even if one errors.
-          }
-        });
+      .forEach((sub) => {
+        try {
+          sub.next(cart);
+        } catch (e) {
+          // we want all subscribers to get the update even if one errors.
+        }
+      });
   }
 }

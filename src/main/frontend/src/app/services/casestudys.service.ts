@@ -54,16 +54,18 @@ export class CaseStudyDataService extends CachcingServiceBase {
   }
 
   public searchByQuery(queryType: string, queryValue: string): Observable<CaseStudy[]> {
-    return this.cache<CaseStudy[]>(() => this.filteredCasestudys,
-      (val: Observable<CaseStudy[]>) => this.filteredCasestudys = val,
-      () => this.http
-        .get(this.API_URL + "/" + queryType + "/" + queryValue)
-        .map((response) => response.json()
-          .map((item) => {
-            let model = new CaseStudy();
-            model.updateFrom(item);
-            return model;
-          })));
+    console.log("here queryType -> "+queryType + " and queryValue "+ queryValue);
+
+    this.filteredCasestudys = this.http
+    .get(this.API_URL + "/" + queryType + "/" + queryValue)
+    .map((response) => response.json()
+      .map((item) => {
+        let model = new CaseStudy();
+        model.updateFrom(item);
+        return model;
+      }));
+    
+    return  this.filteredCasestudys;
   }
 
 }

@@ -52,7 +52,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
     var filteredCasestudys = cartItems.map(x => x.casestudy);
     filteredCasestudys.forEach(function (x) {
-      console.log("yo checkout ts -> " + x.name);
     });
 
     this.casestudyService.createPDF(filteredCasestudys).subscribe();
@@ -63,4 +62,5 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       this.cartSubscription.unsubscribe();
     }
   }
+  
 }

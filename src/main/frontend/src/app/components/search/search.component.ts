@@ -21,6 +21,7 @@ export class SearchComponent implements OnInit {
 
   public searchByQuery(queryValue: string, queryType: string): void {
     this.filteredCasestudys = this.caseStudyService.searchByQuery(queryType, queryValue);
+    console.log("here queryType -> "+queryType + " and queryValue "+ queryValue);
     this.messageEvent.emit(this.filteredCasestudys);
   }
 
