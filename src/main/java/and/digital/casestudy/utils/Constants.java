@@ -19,6 +19,10 @@ public class Constants {
 	public final static String QUERY_VALUE = "queryValue";
 	
 	public final static String PDF_URL = "/convertToPdf";
+		
+	public final static String UPLOAD_CASESTUDY = "/uploadCasestudy";
+	
+	public final static String UPLOAD_MULTIPLE_CASESTUDY = "/uploadMultipleCaseStudys";
 	
 	public final static String NAME = "name";
 	
