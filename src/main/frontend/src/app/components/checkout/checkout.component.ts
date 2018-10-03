@@ -57,6 +57,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     this.casestudyService.createPDF(filteredCasestudys).subscribe();
   }
 
+
   public ngOnDestroy(): void {
     if (this.cartSubscription) {
       this.cartSubscription.unsubscribe();

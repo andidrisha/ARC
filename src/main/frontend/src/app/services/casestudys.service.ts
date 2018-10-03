@@ -1,4 +1,4 @@
-import { Injectable, ErrorHandler } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Http} from "@angular/http";
 import { CaseStudy } from "../models/casestudy.model";
 import "rxjs/add/operator/map";
@@ -16,6 +16,7 @@ export class CaseStudyDataService extends CachcingServiceBase {
 
   public constructor(private http: Http) {
     super();
+    
   }
 
   public all(): Observable<CaseStudy[]> {
@@ -38,24 +39,17 @@ export class CaseStudyDataService extends CachcingServiceBase {
     let options = new RequestOptions({ headers: headers });
 
     return this.http
-      .post(this.API_URL + "/convertToPdf", JSON.stringify(casestudys), options)
-      .map((response) => response.json());
-
+      .post(this.API_URL + "/convertToPdf", JSON.stringify(casestudys), options);
   }
 
-  public uploadCasestudy(casestudy: CaseStudy)
+  public uploadCasestudy(fd: FormData)
   {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-
+    console.log("In uploadCasestudy");
     return this.http
-      .post(this.API_URL, JSON.stringify(casestudy), options)
-      .map((response) => response.json());
+      .post(this.API_URL+"/uploadCasestudy", fd);
   }
 
   public searchByQuery(queryType: string, queryValue: string): Observable<CaseStudy[]> {
-    console.log("here queryType -> "+queryType + " and queryValue "+ queryValue);
-
     this.filteredCasestudys = this.http
     .get(this.API_URL + "/" + queryType + "/" + queryValue)
     .map((response) => response.json()
