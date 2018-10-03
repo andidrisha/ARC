@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Http} from "@angular/http";
+import { Http } from "@angular/http";
 import { CaseStudy } from "../models/casestudy.model";
 import "rxjs/add/operator/map";
 import 'rxjs/add/operator/catch';
@@ -16,7 +16,7 @@ export class CaseStudyDataService extends CachcingServiceBase {
 
   public constructor(private http: Http) {
     super();
-    
+
   }
 
   public all(): Observable<CaseStudy[]> {
@@ -42,24 +42,22 @@ export class CaseStudyDataService extends CachcingServiceBase {
       .post(this.API_URL + "/convertToPdf", JSON.stringify(casestudys), options);
   }
 
-  public uploadCasestudy(fd: FormData)
-  {
-    console.log("In uploadCasestudy");
+  public uploadCasestudy(fd: FormData) {
     return this.http
-      .post(this.API_URL+"/uploadCasestudy", fd);
+      .post(this.API_URL + "/uploadCasestudy", fd);
   }
 
   public searchByQuery(queryType: string, queryValue: string): Observable<CaseStudy[]> {
     this.filteredCasestudys = this.http
-    .get(this.API_URL + "/" + queryType + "/" + queryValue)
-    .map((response) => response.json()
-      .map((item) => {
-        let model = new CaseStudy();
-        model.updateFrom(item);
-        return model;
-      }));
-    
-    return  this.filteredCasestudys;
+      .get(this.API_URL + "/" + queryType + "/" + queryValue)
+      .map((response) => response.json()
+        .map((item) => {
+          let model = new CaseStudy();
+          model.updateFrom(item);
+          return model;
+        }));
+
+    return this.filteredCasestudys;
   }
 
 }

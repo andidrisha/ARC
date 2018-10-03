@@ -20,7 +20,7 @@ export class UploadCasestudyComponent implements OnInit {
   public onFileSelected(event): void {
     this.selectedFile = <File>event.target.files[0];
     const fd = new FormData();
-    fd.append("casestudy", this.selectedFile.name);
-    this.caseStudyService.uploadCasestudy(fd).subscribe(res => console.log(res));
+    fd.append("casestudy", this.selectedFile);
+    this.caseStudyService.uploadCasestudy(fd).subscribe();
   }
 }
