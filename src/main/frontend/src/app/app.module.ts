@@ -15,6 +15,8 @@ import { ShoppingCartService } from "./services/shopping-cart.service";
 import { LocalStorageServie, StorageService } from "./services/storage.service";
 import { SearchComponent } from './components/search/search.component';
 import { UploadCasestudyComponent } from './components/upload-casestudy/upload-casestudy.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UploadDetailsComponent } from './components/upload-details/upload-details.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -25,12 +27,14 @@ import { UploadCasestudyComponent } from './components/upload-casestudy/upload-c
     CheckoutComponent,
     OrderConfirmationComponent,
     SearchComponent,
-    UploadCasestudyComponent
+    UploadCasestudyComponent,
+    UploadDetailsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    NgbModule.forRoot(),
     AppRoutingModule
   ],
   providers: [

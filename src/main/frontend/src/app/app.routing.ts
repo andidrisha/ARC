@@ -5,6 +5,7 @@ import { CheckoutComponent } from "./components/checkout/checkout.component";
 import { OrderConfirmationComponent } from "./components/order-confirmation/order-confirmation.component";
 import { StoreFrontComponent } from "./components/store-front/store-front.component";
 import { SearchComponent } from "./components/search/search.component";
+import { UploadDetailsComponent } from "./components/upload-details/upload-details.component";
 import { PopulatedCartRouteGuard } from "./route-gaurds/populated-cart.route-gaurd";
 
 @NgModule({
@@ -24,6 +25,10 @@ import { PopulatedCartRouteGuard } from "./route-gaurds/populated-cart.route-gau
             {
                 component: SearchComponent,
                 path: "search"
+            },
+            {
+                component: UploadDetailsComponent,
+                path: "upload"
             },
             {
                 component: StoreFrontComponent,

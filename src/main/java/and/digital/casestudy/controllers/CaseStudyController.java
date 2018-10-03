@@ -9,12 +9,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,17 +32,20 @@ import and.digital.casestudy.utils.Constants;
 public class CaseStudyController {
 
 	Logger logger = LoggerFactory.getLogger(CaseStudyController.class);
-	
+
 	@Autowired
 	private FileStorageService fileStorageService;
 
 	@Autowired
 	private CaseStudyService caseStudyService;
 
-	@PostMapping(value = Constants.UPLOAD_CASESTUDY, consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
-	public UploadFileResponse uploadFile(@RequestParam("casestudy") MultipartFile file) {
-		logger.info("Uploading case study ");
-		String fileName = fileStorageService.storeFile(file);
+	@PostMapping(value = Constants.UPLOAD_CASESTUDY)
+	public UploadFileResponse uploadFile(@RequestPart("casestudy") MultipartFile file,
+										 @RequestPart("casestudyname") String name, 
+										 @RequestPart("clientname") String clientname,
+										 @RequestPart("tags") String tags) {
+		logger.info("Uploading case study with case study name as " + name + " client name as " + clientname + " tags as " + tags);
+		String fileName = fileStorageService.storeFile(file,name, clientname, tags);
 
 		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/downloadFile/")
 				.path(fileName).toUriString();
@@ -50,7 +55,9 @@ public class CaseStudyController {
 
 	@PostMapping(Constants.UPLOAD_MULTIPLE_CASESTUDY)
 	public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
-		return Arrays.asList(files).stream().map(file -> uploadFile(file)).collect(Collectors.toList());
+		return null;
+		// return Arrays.asList(files).stream().map(file ->
+		// uploadFile(file)).collect(Collectors.toList());
 	}
 
 	@GetMapping
@@ -75,5 +82,15 @@ public class CaseStudyController {
 	@PostMapping(value = Constants.PDF_URL, produces = { MediaType.APPLICATION_PDF_VALUE })
 	public void createPDF(@RequestBody List<CaseStudy> casestudys) {
 		caseStudyService.createPDF(casestudys);
+	}
+	
+	@DeleteMapping(value = "deleteAllCasestudys")
+	public void deleteAllCaseStudys() {
+		caseStudyService.deleteCaseStudy();
+	}
+	
+	@DeleteMapping(value = "deleteCasestudy")
+	public void deleteCaseStudy(@RequestBody CaseStudy casestudys) {
+		caseStudyService.deleteCaseStudy(casestudys);
 	}
 }

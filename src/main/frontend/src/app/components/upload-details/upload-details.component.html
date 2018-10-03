@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h4 class="modal-title">Upload a Case Study</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" id="UploadModal">
+
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+        <label for="name" >Name</label>
+        <input name= "casestudyname" ngModel required #casestudyname="ngModel" type="text" placeholder="Name of the Case Study" > 
+    
+        <label for="clientname">Client Name</label>
+        <input name = "clientname" ngModel required #clientname="ngModel" type="text" placeholder="Client Name">
+    
+        <label for="tags">Tags</label>
+        <input name = "tags" ngModel required #clientname="ngModel" type="text" placeholder="Tags">
+    
+        <div>
+          <input type="file" name="myfile" (change)="onFileSelected($event)" />
+        </div>
+        <input type="submit" value="Submit" [disabled]="!f.form.valid">
+      </form>
+</div>

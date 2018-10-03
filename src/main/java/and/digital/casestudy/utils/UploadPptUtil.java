@@ -10,28 +10,34 @@ import org.apache.poi.xslf.usermodel.XSLFSlide;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import and.digital.casestudy.models.CaseStudy;
+
 public class UploadPptUtil {
 
 	static Logger logger = LoggerFactory.getLogger(ConvertToPdfUtil.class);
 
-	public static void readPPTXFile(String path) {
+	public static CaseStudy readPPTXFile(String path) {
 		logger.info("Reading the ppt file");
 		XMLSlideShow ppt = null;
+		CaseStudy casestudy = null;
+		StringBuilder sb;
 		try {
 			ppt = new XMLSlideShow(new FileInputStream(path));
 			List<XSLFSlide> slides = ppt.getSlides();
-
+			sb = new StringBuilder();
+			casestudy = new CaseStudy();
 			for (int i = 0; i < slides.size(); i++) {
 				XSLFSlide slide = slides.get(i);
 				String title = slide.getTitle();
 				List<DrawingParagraph> data = slide.getCommonSlideData().getText();
-				System.out.println(title);
+				sb.append(title);
 
 				for (int j = 0; j < data.size(); j++) {
 					DrawingParagraph para = data.get(j);
-					System.out.println(para.getText());
+					sb.append(para.getText());
 				}
 			}
+			casestudy.setDescription(sb.toString());
 		} catch (Exception e) {
 			logger.error("Error while reading the pptx file.");
 			e.printStackTrace();
@@ -42,6 +48,7 @@ public class UploadPptUtil {
 				logger.error("Error while closing the pptx file.");
 			}
 		}
+		return casestudy;
 	}
 
 	public static void main(String[] args) {

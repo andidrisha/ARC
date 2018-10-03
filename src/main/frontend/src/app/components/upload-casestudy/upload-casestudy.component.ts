@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CaseStudyDataService } from "../../services/casestudys.service";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UploadDetailsComponent } from '../upload-details/upload-details.component';
 
 @Component({
   selector: 'app-upload-casestudy',
@@ -10,17 +12,16 @@ export class UploadCasestudyComponent implements OnInit {
 
   selectedFile: File = null;
 
-  public constructor(private caseStudyService: CaseStudyDataService) {
+  public constructor(private caseStudyService: CaseStudyDataService,
+    private modalService: NgbModal) {
   }
 
 
   ngOnInit() {
   }
 
-  public onFileSelected(event): void {
-    this.selectedFile = <File>event.target.files[0];
-    const fd = new FormData();
-    fd.append("casestudy", this.selectedFile);
-    this.caseStudyService.uploadCasestudy(fd).subscribe();
+  public open() {
+    this.modalService.open(UploadDetailsComponent);
   }
+
 }

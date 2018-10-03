@@ -1,6 +1,8 @@
 package and.digital.casestudy.models;
 
 
+import java.util.UUID;
+
 import org.springframework.data.annotation.Id;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -9,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class CaseStudy {
 	
 	@Id
-	private Long id;
+	private UUID id;
 	
 	private String name;
 	private String description;
@@ -23,10 +25,10 @@ public class CaseStudy {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 	public String getDescription() {
