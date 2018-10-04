@@ -28,6 +28,7 @@ export class UploadDetailsComponent implements OnInit {
     fd.append("casestudyname", form.value.casestudyname);
     fd.append("clientname", form.value.clientname);
     fd.append("tags", form.value.tags);
+    console.log("In submit form "+form.value.casestudyname);
     this.caseStudyService.uploadCasestudy(fd).subscribe();
     this.activeModal.dismiss();
   }
