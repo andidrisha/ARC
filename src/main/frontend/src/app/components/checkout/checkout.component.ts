@@ -47,14 +47,16 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       });
     });
   }
+  
+
 
   public createPDF(cartItems: ICartItemWithCaseStudy[]): void {
-
     var filteredCasestudys = cartItems.map(x => x.casestudy);
     filteredCasestudys.forEach(function (x) {
     });
 
     this.casestudyService.createPDF(filteredCasestudys).subscribe();
+    //window.location = item.downloadUrl;
   }
 
 

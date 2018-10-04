@@ -23,7 +23,7 @@ export class CaseStudyDataService extends CachcingServiceBase {
     return this.cache<CaseStudy[]>(() => this.casestudys,
       (val: Observable<CaseStudy[]>) => this.casestudys = val,
       () => this.http
-        .get(this.API_URL)
+        .get(this.API_URL)// "./assets/casestudys.json"
         .map((response) => response.json()
           .map((item) => {
             let model = new CaseStudy();
