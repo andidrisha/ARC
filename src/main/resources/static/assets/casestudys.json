@@ -1,0 +1,26 @@
+[
+  {
+    "id": "9aa113b4-1e4e-4cde-bf9d-8358fc78ea4f",
+    "name": "Case Study 1",
+    "description": "Case Study 1 Description 1",
+    "summary" : "Summary 1 "
+  },
+  {
+    "id": "bdcbe438-ac85-4acf-8949-5627fd5b57df",
+    "name": "Case Study 2",
+    "description": "Case Study 1 Description 1",
+    "summary" : "Summary 2 "
+  },
+  {
+    "id": "58552daa-30f6-46fa-a808-f1a1d7667561",
+    "name": "Case Study 3",
+    "description": "Case Study 3 Description 3",
+    "summary" : "Summary 3 "
+  },
+  {
+    "id": "d4666802-fd84-476f-9eea-c8dd29cfb633",
+    "name": "Case Study 4",
+    "description": "Case Study 4 Description 4",
+    "summary" : "Summary 4 "
+  }
+]
