@@ -76,6 +76,11 @@ public class CaseStudyController {
 			@PathVariable(Constants.QUERY_VALUE) String queryValue) {
 		return caseStudyService.getSearchData(queryType, queryValue);
 	}
+	
+	@GetMapping(Constants.SEARCH_ANY)
+	public List<CaseStudy> getAnySearchData(@PathVariable(Constants.QUERY_VALUE) String queryValue) {
+		return caseStudyService.getSearchAnyData(queryValue);
+	}
 
 	@PostMapping(value = Constants.PDF_URL, produces = { MediaType.APPLICATION_PDF_VALUE })
 	public void createPDF(@RequestBody List<CaseStudy> casestudys) {

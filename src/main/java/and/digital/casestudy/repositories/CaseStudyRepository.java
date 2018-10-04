@@ -19,5 +19,8 @@ public interface CaseStudyRepository extends MongoRepository<CaseStudy, Long> {
 	
 	@Query("{ 'name' : { $regex: ?0 } }")
 	public List<CaseStudy> findByName(String name);
+	
+	@Query("{ 'description' : { $regex: ?0 } }")
+	public List<CaseStudy> findAny(String name);
 
 }

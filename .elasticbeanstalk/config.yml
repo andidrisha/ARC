@@ -3,7 +3,7 @@ branch-defaults:
     environment: ARC-dev
     group_suffix: null
 deploy:
-  artifact: target/ARC-0.0.1-SNAPSHOT.jar
+  artifact: ~/ARC/$(ls -r  *.jar | head -1)
 environment-defaults:
   ARC-dev:
     branch: null

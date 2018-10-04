@@ -14,6 +14,8 @@ public class Constants {
 	
 	public final static String QUERY_BY_URL = "/{queryType}/{queryValue}";
 	
+	public final static String SEARCH_ANY = "/{queryValue}";
+	
 	public final static String QUERY_TYPE = "queryType";
 	
 	public final static String QUERY_VALUE = "queryValue";

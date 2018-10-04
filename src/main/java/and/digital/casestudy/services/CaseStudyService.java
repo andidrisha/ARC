@@ -84,11 +84,15 @@ public class CaseStudyService {
 	}
 
 	public void deleteCaseStudy() {
-		caseStudyRepository.deleteAll();	
+		caseStudyRepository.deleteAll();
 	}
-	
+
 	public void deleteCaseStudy(CaseStudy casestudy) {
 		caseStudyRepository.delete(casestudy);
+	}
+
+	public List<CaseStudy> getSearchAnyData(String queryValue) {
+		return caseStudyRepository.findAny(regexBegin + queryValue + regexEnd);
 	}
 
 }
