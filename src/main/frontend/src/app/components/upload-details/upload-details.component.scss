@@ -17,3 +17,9 @@ input[type=submit]:hover {
 div {
     box-sizing: 50%;
 }
+
+input[type=submit]:disabled
+{
+    background:#CCC;
+}
+
