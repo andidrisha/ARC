@@ -2,8 +2,6 @@ branch-defaults:
   master:
     environment: ARC-dev
     group_suffix: null
-deploy:
-  artifact: elasticbeanstalk-eu-west-2-267180070901/ARC/*.jar
 environment-defaults:
   ARC-dev:
     branch: null
@@ -22,4 +20,3 @@ global:
   repository: null
   sc: git
   workspace_type: Application
-  
