@@ -4,11 +4,11 @@ branch-defaults:
     group_suffix: null
 environment-defaults:
   ARC-dev:
-    branch: null
-    repository: null
+    branch: master
+    repository: https://github.com/andidrisha/ARC
 global:
   application_name: ARC
-  branch: null
+  branch: master
   default_ec2_keyname: sample-key
   default_platform: Java 8
   default_region: eu-west-2
@@ -17,6 +17,6 @@ global:
   platform_name: null
   platform_version: null
   profile: dev
-  repository: null
+  repository: https://github.com/andidrisha/ARC
   sc: git
   workspace_type: Application
