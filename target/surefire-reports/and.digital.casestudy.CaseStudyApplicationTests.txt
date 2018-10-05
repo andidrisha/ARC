@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: and.digital.casestudy.CaseStudyApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.025 s - in and.digital.casestudy.CaseStudyApplicationTests
