@@ -51,9 +51,4 @@ public class UploadPptUtil {
 		return casestudy;
 	}
 
-	public static void main(String[] args) {
-		String home = System.getProperty("user.home");
-		readPPTXFile(home + "//Downloads//Test.pptx");
-	}
-
 }
